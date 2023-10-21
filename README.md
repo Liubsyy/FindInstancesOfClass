@@ -1,9 +1,9 @@
 # 获取一个类的所有对象实例
 
-运行时根据一个类获取这个类所有实例化的对象，基于JVMTI实现<br>
+运行时根据一个类获取这个类所有实例化的对象，基于JVMTI，通过JNI调用C++编写的native函数实现<br>
 
 ### 使用方式
-引用maven依赖，里面打包的动态链接库是基于win64, linux64, macos10.12
+引用maven依赖，jar包里打包了动态链接库so/dylib/dll文件，是基于linux64，win10-64, macos10.12编译的
 ```
 <dependency>
    <groupId>io.github.liubsyy</groupId>
@@ -12,7 +12,7 @@
 </dependency>
 ```
 
-然后直接调用函数 **InstancesOfClass**.getInstances(Class<?> targetClass) 即可获取一个类的所有对象实例
+然后直接调用函数 **InstancesOfClass.getInstances(Class<?> targetClass)** 即可获取一个类的所有对象实例
 ```java
 package com.liubs.findinstances.jvmti;
 
@@ -29,9 +29,6 @@ public class InstancesOfClass {
 
 ```
 
-详见 [InstancesOfClass.java](./src/main/java/com/liubs/findinstances/jvmti/InstancesOfClass.java)
-
-<br>
 
 ### 测试用例
 [TestInstancesOfClass.java](./src/test/java/TestInstancesOfClass.java)
@@ -47,14 +44,13 @@ B的所有对象实例是否一致：true
 ```
 
 ### 编译打包
-一般情况下直接使用jar包即可，如果jar包中的链接库和操作系统不符合或者需要自己编译，可通过compile脚本编译依赖库。<br>
-首先安装gcc和g++环境，然后执行脚本，执行完生成的链接库在resources目录下
+一般情况下直接使用jar包即可，如果jar包中的链接库（so/dylib/dll文件）和操作系统不兼容或者需要自己编译，可通过compile脚本编译链接库。<br>
+native函数 **InstancesOfClass.getInstances(Class<?> targetClass)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成目标文件到resources目录下
 
 - macos: compile_mac.sh
 - linux: compile_linux.sh
 - windows: compile_windows.bat
 
-编译这块写过jni的朋友应该都懂，这里就不详细介绍了
-
+生成完之后， 初始化 **InstancesOfClass** 会读取链接库文件
 
 
