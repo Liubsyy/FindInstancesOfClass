@@ -9,9 +9,41 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
+    <name>FindInstancesOfClass</name>
+    <url>https://github.com/Liubsyy/FindInstancesOfClass</url>
+    <description>Find all instances of class</description>
+
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.resources.plugin.version>2.6</maven.resources.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License v2.0</name>
+            <url>https://github.com/Liubsyy/FindInstancesOfClass/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>https://github.com/Liubsyy/FindInstancesOfClass</connection>
+        <developerConnection>https://github.com/Liubsyy/FindInstancesOfClass.git</developerConnection>
+        <url>https://github.com/Liubsyy/FindInstancesOfClass</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Liubsyy</name>
+            <email>liubsyy@gmail.com</email>
+            <url>https://github.com/Liubsyy</url>
+            <roles>
+                <role>Admin</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
 
     <build>
@@ -21,15 +53,15 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
+                    <source>${maven.compiler.source}</source>
+                    <target>>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
+                <version>${maven.resources.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>process-META</id>
@@ -53,6 +85,7 @@
             </plugin>
         </plugins>
     </build>
+
 
 
 </project>
