@@ -1,6 +1,6 @@
 # 获取一个类的所有对象实例
 
-运行时根据一个类获取这个类所有实例化的对象，基于JVMTI，通过JNI调用C++编写的native函数实现<br>
+运行时根据Java类获取这个类所有实例化的对象，基于JVMTI，通过JNI调用C++编写的native函数实现<br>
 
 ### 使用方式
 引用maven依赖，jar包里打包了动态链接库so/dylib/dll文件，是基于linux64，win10-64, macos10.12编译的
