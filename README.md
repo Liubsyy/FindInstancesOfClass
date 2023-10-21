@@ -3,7 +3,7 @@
 运行时根据一个类获取这个类创建的所有实例，基于jvmti实现<br>
 
 ### 使用方式
-引用maven依赖
+引用maven依赖，里面打包的动态链接库是基于win64, linux64, macos10.12
 ```
 <dependency>
    <groupId>io.github.liubsyy</groupId>
@@ -11,7 +11,6 @@
    <version>1.0.0</version>
 </dependency>
 ```
-里面打包的动态链接库是基于win64, linux64, macos10.12
 
 再调用 InstancesOfClass.getInstances(Class<?> targetClass)方法即可
 ```java
