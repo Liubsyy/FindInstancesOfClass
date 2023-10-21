@@ -3,7 +3,7 @@
 运行时根据Java类获取这个类所有实例化的对象，基于JVMTI，通过JNI调用C++编写的native函数实现<br>
 
 ### 使用方式
-引用maven依赖，jar包里打包了动态链接库so/dylib/dll文件，是基于linux64，win10-64, macos10.12编译的
+引用maven依赖，FindInstancesOfClass.jar打包了动态链接库findins.so, findins.dylib和findins.dll文件，分别是基于linux64, macos10.12和win10-64编译的
 ```
 <dependency>
    <groupId>io.github.liubsyy</groupId>
@@ -44,12 +44,13 @@ B的所有对象实例是否一致：true
 ```
 
 ### 编译打包
-一般情况下直接使用jar包即可，如果jar包中的链接库（so/dylib/dll文件）和操作系统不兼容或者需要自己编译，可通过compile脚本编译链接库。<br>
-native函数 **InstancesOfClass.getInstances(Class<?> targetClass)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成目标文件到resources目录下
-
+一般情况下直接使用jar包即可，如果jar包中的链接库（so/dylib/dll文件）和操作系统不兼容或者需要自己编译，可通过compile_* 脚本编译链接库
 - macos: compile_mac.sh
 - linux: compile_linux.sh
 - windows: compile_windows.bat
+
+native函数 **InstancesOfClass.getInstances(Class<?> targetClass)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成链接库文件，生成的目标文件在resources目录下
+<br>
 
 生成完之后， **InstancesOfClass** 的static方法会读取链接库文件
 
