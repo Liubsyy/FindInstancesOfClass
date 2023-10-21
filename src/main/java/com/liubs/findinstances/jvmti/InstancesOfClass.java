@@ -26,7 +26,7 @@ public class InstancesOfClass {
     }
 
     /**
-     * 返回所有的实例对象
+     * native方法 : 返回所有的实例对象
      * @param targetClass 需要查询实例的Class
      * @return
      */
