@@ -53,7 +53,7 @@ Found 10 objects with tag
 - linux: compile_linux.sh
 - windows: compile_windows.bat
 
-写过jni的朋友应该都懂，这里就不详细介绍了
+编译这块写过jni的朋友应该都懂，这里就不详细介绍了
 
 
 
