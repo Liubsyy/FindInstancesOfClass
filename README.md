@@ -12,7 +12,7 @@
 </dependency>
 ```
 
-再调用 InstancesOfClass.getInstances(Class<?> targetClass)方法即可
+然后直接调用 native方法InstancesOfClass.getInstances(Class<?> targetClass)即可获取一个类的所有对象实例
 ```java
 package com.liubs.findinstances.jvmti;
 
@@ -46,8 +46,8 @@ Found 10 objects with tag
 ```
 
 ### 编译打包
-一般情况下直接使用jar包即可，如果操作系统不符合或者需要自己编译，可通过compile脚本编译依赖库
-首先安装gcc和g++环境，然后按操作系统执行脚本，执行完生成的链接库在resources目录下
+一般情况下直接使用jar包即可，如果jar包中的链接库和操作系统不符合或者需要自己编译，可通过compile脚本编译依赖库。<br>
+首先安装gcc和g++环境，然后执行脚本，执行完生成的链接库在resources目录下
 
 - macos: compile_mac.sh
 - linux: compile_linux.sh
