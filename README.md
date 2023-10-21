@@ -12,7 +12,7 @@
 </dependency>
 ```
 
-然后直接调用 native方法InstancesOfClass.getInstances(Class<?> targetClass)即可获取一个类的所有对象实例
+然后直接调用函数InstancesOfClass.getInstances(Class<?> targetClass)即可获取一个类的所有对象实例
 ```java
 package com.liubs.findinstances.jvmti;
 
