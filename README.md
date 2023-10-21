@@ -51,6 +51,6 @@ native函数 **InstancesOfClass.getInstances(Class<?> targetClass)**  是JNI实�
 - linux: compile_linux.sh
 - windows: compile_windows.bat
 
-生成完之后， 初始化 **InstancesOfClass** 会读取链接库文件
+生成完之后， **InstancesOfClass** 的static方法会读取链接库文件
 
 
