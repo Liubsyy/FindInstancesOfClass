@@ -2,7 +2,7 @@
 
 运行时根据Java类获取这个类所有实例化的对象，基于JVMTI，通过JNI调用C++编写的native函数实现<br>
 
-### 使用方式
+### 使用说明
 引用maven依赖，FindInstancesOfClass.jar打包了动态链接库findins.so, findins.dylib和findins.dll文件，分别是基于linux64, macos10.12和win10-64编译的
 ```
 <dependency>
