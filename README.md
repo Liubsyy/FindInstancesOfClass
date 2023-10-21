@@ -3,7 +3,7 @@
 运行时根据Java类获取这个类所有实例化的对象，基于JVMTI，通过JNI调用C++编写的native函数实现<br>
 
 ### 使用说明
-引用maven依赖，里面打包了动态链接库findins.so, findins.dylib和findins.dll文件，分别是基于linux64, macos10.12和win10-64编译的
+先引用maven依赖
 ```
 <dependency>
    <groupId>io.github.liubsyy</groupId>
@@ -14,10 +14,7 @@
 
 然后直接调用函数 **InstancesOfClass.getInstances(Class<?> targetClass)** 即可获取一个类的所有对象实例
 ```java
-package com.liubs.findinstances.jvmti;
-
 public class InstancesOfClass {
-
     /**
      * native方法 : 返回所有的实例对象
      * @param targetClass 需要查询实例的Class
@@ -43,13 +40,14 @@ A的所有对象实例是否一致：true
 B的所有对象实例是否一致：true
 ```
 
+
 ### 编译打包
-一般情况下直接使用jar包即可，如果jar包中的链接库（so/dylib/dll文件）和操作系统不兼容或者需要自己编译，可通过compile_* 脚本编译链接库
+一般情况下直接使用jar包即可，里面打包了动态链接库findins.so, findins.dylib和findins.dll文件，分别是基于linux64, macos10.12和win10-64编译的，如果jar包中的链接库和操作系统不兼容或者需要自己编译，可通过compile_* 脚本编译链接库
 - macos: compile_mac.sh
 - linux: compile_linux.sh
 - windows: compile_windows.bat
 
-native函数 **InstancesOfClass.getInstances(Class<?> targetClass)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成链接库文件，生成的目标文件在resources目录下
+由于native函数 **InstancesOfClass.getInstances(Class<?> targetClass)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成链接库文件，生成的目标文件在resources目录下
 <br>
 
 生成完之后， **InstancesOfClass** 的static方法会读取链接库文件
