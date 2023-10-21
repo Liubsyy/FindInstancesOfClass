@@ -40,9 +40,6 @@ A的所有对象实例是否一致：true
 [B@62043840, B@5315b42e, B@2ef9b8bc, B@5d624da6, B@1e67b872, B@60addb54, B@3f2a3a5, B@4cb2c100, B@6fb554cc, B@614c5515]
 [B@62043840, B@5315b42e, B@2ef9b8bc, B@5d624da6, B@1e67b872, B@60addb54, B@3f2a3a5, B@4cb2c100, B@6fb554cc, B@614c5515]
 B的所有对象实例是否一致：true
-Disconnected from the target VM, address: '127.0.0.1:56516', transport: 'socket'
-Found 10 objects with tag
-Found 10 objects with tag
 ```
 
 ### 编译打包
