@@ -29,7 +29,7 @@ JNIEXPORT jobjectArray JNICALL Java_com_liubs_findinstances_jvmti_InstancesOfCla
 
     printf("Found %d objects with tag\n", count);
 
-    // 转换 std::vector<jobject> 为 jobjectArray 并返回
+    // 转换jobject* 为 jobjectArray 并返回
     jobjectArray result = env->NewObjectArray(count, targetClazz, NULL);
     for (int i = 0; i < count; i++) {
         env->SetObjectArrayElement(result, i, instances[i]);
