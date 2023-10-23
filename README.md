@@ -50,6 +50,6 @@ B的所有对象实例是否一致：true
 由于native函数 **InstancesOfClass.getInstances(Class<?> targetClass)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成链接库文件，生成的目标文件在resources目录下
 <br>
 
-生成完之后， **InstancesOfClass** 的static方法会读取链接库文件
-
+启动程序后， **InstancesOfClass** 的static方法会读取生成的链接库文件<br>
+[InstancesOfClass.java](./src/main/java/com/liubs/findinstances/jvmti/InstancesOfClass.java)
 
