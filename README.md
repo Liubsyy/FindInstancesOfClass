@@ -12,7 +12,7 @@
 </dependency>
 ```
 
-然后直接调用函数 **InstancesOfClass.getInstances(Class<?> targetClass)** 即可获取一个类的所有对象实例，详见 [InstancesOfClass.java](./src/main/java/com/liubs/findinstances/jvmti/InstancesOfClass.java)
+然后直接调用函数 **InstancesOfClass.getInstances(Class<?> targetClass)** 即可获取一个类的所有对象实例
 ```java
 public class InstancesOfClass {
     /**
@@ -26,6 +26,7 @@ public class InstancesOfClass {
 
 ```
 
+详见 [InstancesOfClass.java](./src/main/java/com/liubs/findinstances/jvmti/InstancesOfClass.java)
 
 <br>
 
