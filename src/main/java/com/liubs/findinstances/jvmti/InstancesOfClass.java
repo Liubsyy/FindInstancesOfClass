@@ -2,6 +2,8 @@ package com.liubs.findinstances.jvmti;
 
 import java.io.*;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,14 +47,23 @@ public class InstancesOfClass {
 
         String path = nativeLibURL.getPath();
 
+        //处理jar包的逻辑
         //[jar路径] file:/Users/liubs/.m2/repository/io/github/liubsyy/FindInstancesOfClass/1.0.1/FindInstancesOfClass-1.0.2.jar!/findins.dylib
         //[SpringBoot嵌套jar] file:/Users/liubs/IdeaProjects/TestSpring/bin/TestSpring.jar!/BOOT-INF/lib/FindInstancesOfClass-1.0.2.jar!/findins.dylib
         String jarPath = path.substring("file:".length(), path.indexOf("jar!")+"jar".length());
 
+        //路径包含%20替换成空格
+        try {
+            jarPath = URLDecoder.decode(jarPath, StandardCharsets.UTF_8.name());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        //在jar包的目录下生成so/dylib/dll
         File curDir = new File(jarPath);
         curDir = curDir.getParentFile();
         
-        File nativeLibFile = new File(curDir.getAbsolutePath()+"/"+nativeLib);
+        File nativeLibFile = new File(curDir.getAbsolutePath(),nativeLib);
         nativeLibFile.deleteOnExit();
 
         try (InputStream is = nativeLibURL.openStream(); OutputStream os = Files.newOutputStream(nativeLibFile.toPath())) {
