@@ -3,6 +3,8 @@ package com.liubs.findinstances.jvmti;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 根据类获取所有实例：基于JVMTI实现
@@ -72,5 +74,15 @@ public class InstancesOfClass {
      * @return
      */
     public static native Object[] getInstances(Class<?> targetClass);
+
+
+    public static <T> List<T> getInstanceList(Class<T> targetClass){
+        List<T> result = new ArrayList<>();
+        Object[] instances = getInstances(targetClass);
+        for(Object o : instances) {
+            result.add((T)o);
+        }
+        return result;
+    }
 
 }
