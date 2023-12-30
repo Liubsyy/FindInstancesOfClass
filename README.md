@@ -8,20 +8,47 @@
 <dependency>
    <groupId>io.github.liubsyy</groupId>
   <artifactId>FindInstancesOfClass</artifactId>
-   <version>1.0.2</version>
+   <version>1.0.3</version>
 </dependency>
 ```
 
 然后直接调用函数 **InstancesOfClass.getInstances(Class<?> targetClass)** 即可获取一个类的所有对象实例
+<br>InstancesOfClass所有函数如下:
 ```java
 public class InstancesOfClass {
+
+
     /**
-     * native方法 : 返回所有的实例对象
+     * native方法 : 返回类的实例对象
+     * @param targetClass 需要查询实例的Class
+     * @param limitNum 数量
+     * @return
+     */
+    public static native Object[] getInstances(Class<?> targetClass,int limitNum);
+
+    /**
+     * 获取类的所有的实例对象
      * @param targetClass 需要查询实例的Class
      * @return
      */
-    public static native Object[] getInstances(Class<?> targetClass);
+    public static Object[] getInstances(Class<?> targetClass);
 
+    /**
+     * 返回类的实例对象List
+     * @param targetClass 需要查询实例的Class
+     * @param limitNum 数量
+     * @return
+     * @param <T>
+     */
+    public static <T> List<T> getInstanceList(Class<T> targetClass,int limitNum);
+
+    /**
+     * 获取类的所有实例对象List
+     * @param targetClass 需要查询实例的Class
+     * @return
+     * @param <T>
+     */
+    public static <T> List<T> getInstanceList(Class<T> targetClass);
 }
 
 ```
@@ -37,12 +64,13 @@ public class InstancesOfClass {
 
 测试结果: 
 ```
-[A@566776ad, A@6108b2d7, A@1554909b, A@6bf256fa, A@6cd8737, A@22f71333, A@13969fbe, A@6aaa5eb0, A@3498ed, A@1a407d53]
-[A@566776ad, A@6108b2d7, A@1554909b, A@6bf256fa, A@6cd8737, A@22f71333, A@13969fbe, A@6aaa5eb0, A@3498ed, A@1a407d53]
+A所有创建实例:[A@511d50c0, A@60e53b93, A@5e2de80c, A@1d44bcfa, A@266474c2, A@6f94fa3e, A@5e481248, A@66d3c617, A@63947c6b, A@2b193f2d]
+A所有查询出来的实例:[A@511d50c0, A@60e53b93, A@5e2de80c, A@1d44bcfa, A@266474c2, A@6f94fa3e, A@5e481248, A@66d3c617, A@63947c6b, A@2b193f2d]
 A的所有对象实例是否一致：true
-[B@62043840, B@5315b42e, B@2ef9b8bc, B@5d624da6, B@1e67b872, B@60addb54, B@3f2a3a5, B@4cb2c100, B@6fb554cc, B@614c5515]
-[B@62043840, B@5315b42e, B@2ef9b8bc, B@5d624da6, B@1e67b872, B@60addb54, B@3f2a3a5, B@4cb2c100, B@6fb554cc, B@614c5515]
+B所有创建实例:[B@b1bc7ed, B@7cd84586, B@30dae81, B@1b2c6ec2, B@4edde6e5, B@70177ecd, B@1e80bfe8, B@66a29884, B@4769b07b, B@cc34f4d]
+B所有查询出来的实例:[B@b1bc7ed, B@7cd84586, B@30dae81, B@1b2c6ec2, B@4edde6e5, B@70177ecd, B@1e80bfe8, B@66a29884, B@4769b07b, B@cc34f4d]
 B的所有对象实例是否一致：true
+A取其中3个,是否所有A实例的子集:true 
 ```
 
 
@@ -52,7 +80,7 @@ B的所有对象实例是否一致：true
 - linux: compile_linux.sh
 - windows: compile_windows.bat
 
-由于native函数 **InstancesOfClass.getInstances(Class<?> targetClass)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成链接库文件，生成的目标文件在resources目录下
+由于native函数 **InstancesOfClass.getInstances(Class<?> targetClass,int limitNum)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成链接库文件，生成的目标文件在resources目录下
 <br>
 
 启动程序后， **InstancesOfClass** 的static方法会读取生成的链接库文件<br>
