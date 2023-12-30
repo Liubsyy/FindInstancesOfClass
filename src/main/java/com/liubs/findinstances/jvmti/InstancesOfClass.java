@@ -82,7 +82,7 @@ public class InstancesOfClass {
     /**
      * native方法 : 返回类的实例对象
      * @param targetClass 需要查询实例的Class
-     * @param limitNum 数量
+     * @param limitNum 最多返回实例的数量
      * @return
      */
     public static native Object[] getInstances(Class<?> targetClass,int limitNum);
@@ -100,7 +100,7 @@ public class InstancesOfClass {
     /**
      * 返回类的实例对象List
      * @param targetClass 需要查询实例的Class
-     * @param limitNum 数量
+     * @param limitNum 最多返回实例的数量
      * @return
      * @param <T>
      */
