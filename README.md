@@ -17,15 +17,6 @@
 ```java
 public class InstancesOfClass {
 
-
-    /**
-     * native方法 : 返回类的实例对象
-     * @param targetClass 需要查询实例的Class
-     * @param limitNum 数量
-     * @return
-     */
-    public static native Object[] getInstances(Class<?> targetClass,int limitNum);
-
     /**
      * 获取类的所有的实例对象
      * @param targetClass 需要查询实例的Class
@@ -34,9 +25,18 @@ public class InstancesOfClass {
     public static Object[] getInstances(Class<?> targetClass);
 
     /**
+     * native方法 : 返回类的实例对象
+     * @param targetClass 需要查询实例的Class
+     * @param limitNum 最多返回实例的数量
+     * @return
+     */
+    public static native Object[] getInstances(Class<?> targetClass,int limitNum);
+
+
+    /**
      * 返回类的实例对象List
      * @param targetClass 需要查询实例的Class
-     * @param limitNum 数量
+     * @param limitNum 最多返回实例的数量
      * @return
      * @param <T>
      */
