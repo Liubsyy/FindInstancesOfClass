@@ -26,7 +26,7 @@ public class InstancesOfClass {
             nativeLib = "findins.dll";
         }
         if(null == nativeLib) {
-            throw new UnsupportedOperationException("不支持当前操作系统");
+            throw new UnsupportedOperationException("不支持当前操作系统"+osName);
         }
         URL nativeLibURL = InstancesOfClass.class.getClassLoader().getResource(nativeLib);
         if(null == nativeLibURL) {
@@ -82,18 +82,31 @@ public class InstancesOfClass {
     /**
      * native方法 : 返回所有的实例对象
      * @param targetClass 需要查询实例的Class
+     * @param limitNum 数量
      * @return
      */
-    public static native Object[] getInstances(Class<?> targetClass);
+    public static native Object[] getInstances(Class<?> targetClass,int limitNum);
+
+    /**
+     * 获取所有的实例对象
+     * @param targetClass 需要查询实例的Class
+     * @return
+     */
+    public static Object[] getInstances(Class<?> targetClass) {
+        return getInstances(targetClass,Integer.MAX_VALUE);
+    }
 
 
-    public static <T> List<T> getInstanceList(Class<T> targetClass){
+    public static <T> List<T> getInstanceList(Class<T> targetClass,int limitNum){
         List<T> result = new ArrayList<>();
-        Object[] instances = getInstances(targetClass);
+        Object[] instances = getInstances(targetClass,limitNum);
         for(Object o : instances) {
             result.add((T)o);
         }
         return result;
+    }
+    public static <T> List<T> getInstanceList(Class<T> targetClass){
+        return getInstanceList(targetClass,Integer.MAX_VALUE);
     }
 
 }

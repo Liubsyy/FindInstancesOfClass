@@ -13,7 +13,7 @@ extern "C" {
  * Signature: (Ljava/lang/Class;)[Ljava/lang/Object;
  */
 JNIEXPORT jobjectArray JNICALL Java_com_liubs_findinstances_jvmti_InstancesOfClass_getInstances
-  (JNIEnv *, jclass, jclass);
+  (JNIEnv *, jclass, jclass,jint);
 
 #ifdef __cplusplus
 }

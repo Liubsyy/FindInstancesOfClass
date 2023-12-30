@@ -16,7 +16,7 @@ class B{}
 
 public class TestInstancesOfClass {
 
-    private static <T> boolean isEqual(List<T> list, Object[] insts){
+    private static <T> boolean isSame(List<T> list, Object[] insts){
         if(null == list && null == insts){
             return true;
         }
@@ -45,9 +45,9 @@ public class TestInstancesOfClass {
             insts1.add(new A());
         }
         Object[] insts1_find = InstancesOfClass.getInstances(A.class);
-        System.out.println(insts1);
-        System.out.println(Arrays.asList(insts1_find));
-        System.out.println("A的所有对象实例是否一致："+isEqual(insts1,insts1_find));
+        System.out.println("A所有创建实例:" + insts1);
+        System.out.println("A所有查询出来的实例:" + Arrays.asList(insts1_find));
+        System.out.println("A的所有对象实例是否一致："+ isSame(insts1,insts1_find));
 
 
         List<B> insts2 = new ArrayList<>();
@@ -55,9 +55,15 @@ public class TestInstancesOfClass {
             insts2.add(new B());
         }
         Object[] insts2_find = InstancesOfClass.getInstances(B.class);
-        System.out.println(insts2);
-        System.out.println(Arrays.asList(insts2_find));
-        System.out.println("B的所有对象实例是否一致："+isEqual(insts2,insts2_find));
+        System.out.println("B所有创建实例:" + insts2);
+        System.out.println("B所有查询出来的实例:" + Arrays.asList(insts2_find));
+        System.out.println("B的所有对象实例是否一致："+isSame(insts2,insts2_find));
+
+
+        //趋而复返，取A其中3个实例
+        List<A> an = InstancesOfClass.getInstanceList(A.class,5);
+        System.out.printf("A取其中%d个,是否所有A实例的子集:%s ", an.size(),insts1.containsAll(an) );
+
     }
 
 }
