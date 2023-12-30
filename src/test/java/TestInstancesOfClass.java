@@ -61,7 +61,7 @@ public class TestInstancesOfClass {
 
 
         //趋而复返，取A其中3个实例
-        List<A> an = InstancesOfClass.getInstanceList(A.class,5);
+        List<A> an = InstancesOfClass.getInstanceList(A.class,3);
         System.out.printf("A取其中%d个,是否所有A实例的子集:%s ", an.size(),insts1.containsAll(an) );
 
     }
