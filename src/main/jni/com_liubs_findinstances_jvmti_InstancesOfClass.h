@@ -10,10 +10,10 @@ extern "C" {
 /*
  * Class:     com_liubs_findinstances_jvmti_InstancesOfClass
  * Method:    getInstances
- * Signature: (Ljava/lang/Class;)[Ljava/lang/Object;
+ * Signature: (Ljava/lang/Class;I)[Ljava/lang/Object;
  */
 JNIEXPORT jobjectArray JNICALL Java_com_liubs_findinstances_jvmti_InstancesOfClass_getInstances
-  (JNIEnv *, jclass, jclass,jint);
+  (JNIEnv *, jclass, jclass, jint);
 
 #ifdef __cplusplus
 }
