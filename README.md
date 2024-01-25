@@ -76,9 +76,9 @@ A取其中3个,是否所有A实例的子集:true
 
 ### 编译打包
 一般情况下直接使用jar包即可，里面打包了动态链接库findins.so, findins.dylib和findins.dll文件，分别是基于linux64, macos10.12和win10-64编译的，如果jar包中的链接库和操作系统不兼容或者需要自己编译，可通过compile_* 脚本编译链接库
-- macos: compile_mac.sh
-- linux: compile_linux.sh
-- windows: compile_windows.bat
+- MacOs: compile_mac.sh
+- Linux: compile_linux.sh
+- Windows: compile_windows.bat
 
 由于native函数 **InstancesOfClass.getInstances(Class<?> targetClass,int limitNum)**  是JNI实现的，语言是C++，需要安装gcc和g++环境，然后执行脚本生成链接库文件，生成的目标文件在resources目录下
 <br>
