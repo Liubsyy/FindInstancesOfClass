@@ -18,10 +18,19 @@ public class InstancesOfClass {
     static {
         String nativeLib = null;
         String osName = System.getProperty("os.name").toLowerCase();
+        String osArch = System.getProperty("os.arch");  //x86 & arm架构标识
         if(osName.contains("mac")) {
-            nativeLib = "findins.dylib";
+            if(null != osArch && osArch.toLowerCase().contains("aarch")) {
+                nativeLib = "findins_arm.dylib";
+            }else {
+                nativeLib = "findins.dylib";
+            }
         }else if(osName.contains("linux")) {
-            nativeLib = "findins.so";
+            if(null != osArch && osArch.toLowerCase().contains("aarch")) {
+                nativeLib = "findins_arm.so";
+            }else {
+                nativeLib = "findins.so";
+            }
         }else if(osName.contains("windows")) {
             nativeLib = "findins.dll";
         }
