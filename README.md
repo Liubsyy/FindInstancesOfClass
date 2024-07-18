@@ -7,7 +7,7 @@
 ```
 <dependency>
    <groupId>io.github.liubsyy</groupId>
-  <artifactId>FindInstancesOfClass</artifactId>
+   <artifactId>FindInstancesOfClass</artifactId>
    <version>1.0.4</version>
 </dependency>
 ```
